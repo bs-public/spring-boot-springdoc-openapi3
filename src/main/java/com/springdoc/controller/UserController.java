@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.springdoc.dto.UserDTO;
 import com.springdoc.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,7 @@ public class UserController {
   @PostMapping("/users")
   @Operation(summary = "Create a new user", description = "To create a new user in the system.")
   public UserDTO createUser(
-      @Parameter(description = "User object to store in database table") @RequestBody
+      @Parameter(description = "User object to store in database table") @Valid @RequestBody
           UserDTO userDto) {
     return userService.createUser(userDto);
   }
@@ -54,7 +55,7 @@ public class UserController {
   @Operation(summary = "Update a user", description = "Updates the details of an existing user.")
   public UserDTO updateUser(
       @Parameter(description = "ID of the user to update") @PathVariable Long id,
-      @Parameter(description = "Updated user object") @RequestBody UserDTO userDetails) {
+      @Parameter(description = "Updated user object") @Valid @RequestBody UserDTO userDetails) {
     return userService.updateUser(id, userDetails);
   }
 

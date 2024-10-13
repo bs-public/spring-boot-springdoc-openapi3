@@ -1,6 +1,8 @@
 package com.springdoc.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
@@ -12,9 +14,11 @@ public class UserDTO {
       accessMode = Schema.AccessMode.READ_ONLY)
   private Long id;
 
-  @Schema(description = "The name of the user")
+  @NotBlank
+  @Schema(description = "The name of the user", requiredMode = Schema.RequiredMode.REQUIRED)
   private String name;
 
-  @Schema(description = "The email of the user")
+  @Email
+  @Schema(description = "The email of the user", requiredMode = Schema.RequiredMode.REQUIRED)
   private String email;
 }

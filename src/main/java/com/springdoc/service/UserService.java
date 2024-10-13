@@ -13,22 +13,24 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   private final UserRepository userRepository;
+  private final UserMapper userMapper;
 
-  public UserService(UserRepository userRepository) {
+  public UserService(UserRepository userRepository, UserMapper userMapper) {
     this.userRepository = userRepository;
+    this.userMapper = userMapper;
   }
 
   public UserDTO createUser(UserDTO userDto) {
-    User user = UserMapper.toEntity(userDto);
-    return UserMapper.toDto(userRepository.save(user));
+    User user = userMapper.toEntity(userDto);
+    return userMapper.toDto(userRepository.save(user));
   }
 
   public List<UserDTO> getAllUsers() {
-    return userRepository.findAll().stream().map(UserMapper::toDto).collect(Collectors.toList());
+    return userRepository.findAll().stream().map(userMapper::toDto).collect(Collectors.toList());
   }
 
   public UserDTO getUserById(Long id) {
-    return userRepository.findById(id).map(UserMapper::toDto).orElse(null);
+    return userRepository.findById(id).map(userMapper::toDto).orElse(null);
   }
 
   public UserDTO updateUser(Long id, UserDTO userDetailsDto) {
@@ -38,7 +40,7 @@ public class UserService {
             user -> {
               user.setName(userDetailsDto.getName());
               user.setEmail(userDetailsDto.getEmail());
-              return UserMapper.toDto(userRepository.save(user));
+              return userMapper.toDto(userRepository.save(user));
             })
         .orElse(null);
   }

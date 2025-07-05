@@ -5,9 +5,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
+        <version>3.5.3</version>
         <relativePath/>
     </parent>
+
     <groupId>com</groupId>
     <artifactId>spring-boot-springdoc-openapi3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -15,7 +16,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>24</java.version>
         <springdoc.version>2.6.0</springdoc.version>
         <mapstruct.version>1.6.2</mapstruct.version>
     </properties>

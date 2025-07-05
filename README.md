@@ -2,7 +2,7 @@
 
 **Note:** This SpringDoc library version 2 supports:
 - OpenAPI 3
-- Spring Boot v3.3.4
+- Spring Boot v3.5.3
 - Springdoc v2.6.0
 
 ## Swagger UI 
